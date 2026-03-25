@@ -1,0 +1,3 @@
+mode,throughput_fps,latency_mean_ms,inference_mean_ms,drop_rate,dropped_frames
+single_thread,10.08,19.41,5.55,0.0,0
+multi_thread,10.09,18.23,3.63,0.0,0

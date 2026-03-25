@@ -1,0 +1,98 @@
+{
+  "experiment_1_single_vs_multi": [
+    {
+      "mode": "single_thread",
+      "throughput_fps": 10.08,
+      "latency_mean_ms": 19.41,
+      "inference_mean_ms": 5.55,
+      "drop_rate": 0.0,
+      "dropped_frames": 0
+    },
+    {
+      "mode": "multi_thread",
+      "throughput_fps": 10.09,
+      "latency_mean_ms": 18.23,
+      "inference_mean_ms": 3.63,
+      "drop_rate": 0.0,
+      "dropped_frames": 0
+    }
+  ],
+  "experiment_2_queue_size": [
+    {
+      "mode": "multi_thread",
+      "throughput_fps": 10.08,
+      "latency_mean_ms": 18.76,
+      "inference_mean_ms": 4.54,
+      "drop_rate": 0.0,
+      "dropped_frames": 0,
+      "queue_size": 2
+    },
+    {
+      "mode": "multi_thread",
+      "throughput_fps": 10.07,
+      "latency_mean_ms": 19.44,
+      "inference_mean_ms": 4.78,
+      "drop_rate": 0.0,
+      "dropped_frames": 0,
+      "queue_size": 8
+    },
+    {
+      "mode": "multi_thread",
+      "throughput_fps": 10.08,
+      "latency_mean_ms": 18.0,
+      "inference_mean_ms": 4.51,
+      "drop_rate": 0.0,
+      "dropped_frames": 0,
+      "queue_size": 16
+    }
+  ],
+  "experiment_3_stream_rate": [
+    {
+      "mode": "multi_thread",
+      "throughput_fps": 10.08,
+      "latency_mean_ms": 17.89,
+      "inference_mean_ms": 4.34,
+      "drop_rate": 0.0,
+      "dropped_frames": 0,
+      "stream_fps": 10
+    },
+    {
+      "mode": "multi_thread",
+      "throughput_fps": 20.15,
+      "latency_mean_ms": 18.59,
+      "inference_mean_ms": 4.3,
+      "drop_rate": 0.0,
+      "dropped_frames": 0,
+      "stream_fps": 20
+    },
+    {
+      "mode": "multi_thread",
+      "throughput_fps": 30.21,
+      "latency_mean_ms": 17.47,
+      "inference_mean_ms": 4.0,
+      "drop_rate": 0.0,
+      "dropped_frames": 0,
+      "stream_fps": 30
+    }
+  ],
+  "experiment_4_cpu_vs_gpu": [
+    {
+      "mode": "single_thread",
+      "throughput_fps": 10.16,
+      "latency_mean_ms": 18.5,
+      "inference_mean_ms": 5.32,
+      "drop_rate": 0.0,
+      "dropped_frames": 0,
+      "device": "cpu"
+    },
+    {
+      "mode": "single_thread",
+      "throughput_fps": 10.16,
+      "latency_mean_ms": 18.32,
+      "inference_mean_ms": 4.53,
+      "drop_rate": 0.0,
+      "dropped_frames": 0,
+      "device": "cuda"
+    }
+  ]
+}
