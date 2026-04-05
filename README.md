@@ -2,7 +2,7 @@
 
 A comprehensive deep learning project for classifying seven types of instruments in video streams using PyTorch. This project benchmarks model performance across various real-time scenarios including single/multi-threaded processing, queue buffering analysis, and CPU/GPU comparisons.
 
-## 📋 Project Overview
+## Project Overview
 
 This project trains and evaluates deep learning models (MobileNetV3-Small and ResNet18) to classify instruments from video frames. It includes extensive benchmarking to understand how these models perform as real-time streaming systems under different conditions.
 
@@ -83,7 +83,7 @@ pip install opencv-python pillow scikit-learn pandas matplotlib psutil
     └── benchmark_results.json    # All benchmark results
 ```
 
-## 📚 Usage Guide
+## Usage Guide
 
 ### 1. Train Models
 
@@ -179,7 +179,7 @@ Generates plots and visualizations of:
 
 Outputs saved as image files for detailed analysis.
 
-## 📊 Results Summary
+## Results Summary
 
 ### Model Performance
 
@@ -202,7 +202,7 @@ Outputs saved as image files for detailed analysis.
 
 See [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md) for detailed results.
 
-## 🔧 Configuration
+## Configuration
 
 All settings are centralized in `config.py`:
 
