@@ -1,4 +1,4 @@
-# Real-Time Instrument Classification Project
+# Real-Time Efficient Instrument Classification Project
 
 A comprehensive deep learning project for classifying seven types of instruments in video streams using PyTorch. This project benchmarks model performance across various real-time scenarios including single/multi-threaded processing, queue buffering analysis, and CPU/GPU comparisons.
 
