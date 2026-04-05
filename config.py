@@ -97,23 +97,27 @@ BENCHMARK_JSON       = OUTPUT_DIR / "benchmark_results.json"
 # ---------------------------------------------------------------------------
 
 SEED             = 42   # Fixed random seed for reproducibility.
-IMAGE_SIZE       = 224  # Input image size for the model (224x224 is common for pretrained models).
-BATCH_SIZE       = 32   # Number of images processed in each training batch.
-EPOCHS           = 100  # Number of times the entire dataset is passed through the model during training.
-LEARNING_RATE    = 1e-3 # Learning rate for the optimizer.
+IMAGE_SIZE       = 256  # Input image size for the model (increased from 224 for better feature capture).
+BATCH_SIZE       = 16   # Number of images processed in each training batch (reduced for better gradient stability).
+EPOCHS           = 150  # Number of times the entire dataset is passed through the model during training (increased for convergence).
+LEARNING_RATE    = 5e-4 # Learning rate for the optimizer (reduced for finer tuning).
 
 # Settings used during benchmark experiments.
-STREAM_FPS       = 10   # Frames per second for the video stream.
+STREAM_FPS       = 15   # Frames per second for the video stream (increased from 10).
 STREAM_FRAMES    = 100  # Number of frames to process in each stream iteration.
 
 # Example queue sizes used to study buffering behavior.
-SMALL_QUEUE      = 2
-LARGE_QUEUE      = 8
+SMALL_QUEUE      = 4
+LARGE_QUEUE      = 16
 
 # Candidate queue sizes for experiment 2 in benchmark.py.
-QUEUE_SIZE_OPTIONS  = [2, 8, 16]
+QUEUE_SIZE_OPTIONS  = [4, 8, 16, 32]
 # Candidate stream rates for experiment 3 in benchmark.py.
-STREAM_RATE_OPTIONS = [10, 20, 30]
+STREAM_RATE_OPTIONS = [15, 25, 35]
+
+# Delay parameters for testing system robustness
+PROCESSING_DELAY_MS = 0    # Milliseconds delay to introduce between frame processing (0 = no delay)
+MODEL_INFERENCE_DELAY_MS = 0  # Additional delay for inference simulation (0 = no artificial delay)
 
 # Number of CPU worker processes that could be used for loading data.
 # This keeps the value small so the project stays lightweight and stable.
@@ -125,9 +129,13 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # ---------------------------------------------------------------------------
 # Transform pipeline used during training.
 train_transform = transforms.Compose([ # Data augmentation and preprocessing steps for training images.
-    transforms.Resize((256, 256)), #Resize the image to a larger size before cropping.
-    transforms.RandomResizedCrop(IMAGE_SIZE, scale=(0.8, 1.0)), # Randomly crop a region of the image and resize it to the target size.
-    transforms.RandomHorizontalFlip(), # Random left-right flip for data augmentation 
+    transforms.Resize((320, 320)), #Resize the image to a larger size before cropping.
+    transforms.RandomResizedCrop(IMAGE_SIZE, scale=(0.7, 1.0)), # Randomly crop a region of the image and resize it to the target size.
+    transforms.RandomHorizontalFlip(p=0.5), # Random left-right flip for data augmentation 
+    transforms.RandomRotation(20), # Random rotation for robustness (increased to 20 degrees)
+    transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3), # Enhanced color augmentation
+    transforms.RandomAffine(degrees=0, translate=(0.15, 0.15)), # Random translation (increased)
+    transforms.GaussianBlur(kernel_size=3, sigma=(0.1, 2.0)), # Blur augmentation for robustness
     transforms.ToTensor(), # convert the PIL image to a PyTorch tensor and scale pixel values to [0, 1].
     transforms.Normalize([0.485, 0.456, 0.406], # Normalize the image using mean and std values from ImageNet dataset (common for pretrained models).
                          [0.229, 0.224, 0.225]),

@@ -46,7 +46,9 @@ from config import (
     CPU_GPU_CSV,
     FINAL_SUMMARY_CSV,
     LARGE_QUEUE,
+    MODEL_INFERENCE_DELAY_MS,
     NUM_CLASSES,
+    PROCESSING_DELAY_MS,
     QUEUE_COMPARE_CSV,
     QUEUE_SIZE_OPTIONS,
     SEED,
@@ -244,12 +246,21 @@ def run_multi_thread(image_paths, mdl, fps=10,
 
             dequeue_time = time.perf_counter()
             pred_label, confidence, _, inference_ms = predict_frame(mdl, item["frame"])
+            
+            # Apply artificial delay if configured
+            if MODEL_INFERENCE_DELAY_MS > 0:
+                time.sleep(MODEL_INFERENCE_DELAY_MS / 1000.0)
+            
             finish_time = time.perf_counter()
 
             # queue_wait_ms: time the frame spent sitting in the queue
             queue_wait_ms = (dequeue_time - item["enqueue_time"]) * 1000
             # latency_ms: total time from scheduled arrival to prediction done
             latency_ms    = (finish_time  - item["scheduled_time"]) * 1000
+            
+            # Apply processing delay between frames if configured
+            if PROCESSING_DELAY_MS > 0:
+                time.sleep(PROCESSING_DELAY_MS / 1000.0)
 
             rows.append({
                 "mode":            "multi_thread",

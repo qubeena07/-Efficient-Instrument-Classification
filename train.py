@@ -177,13 +177,13 @@ def run_epoch(model, loader, criterion, optimizer=None):
 def train_model(model_name):
     model     = build_model(model_name, NUM_CLASSES).to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = AdamW(model.parameters(), lr=LEARNING_RATE)
-    scheduler = ReduceLROnPlateau(optimizer, mode="min", patience=1, factor=0.5)
+    optimizer = AdamW(model.parameters(), lr=LEARNING_RATE, weight_decay=1e-4)
+    scheduler = ReduceLROnPlateau(optimizer, mode="min", patience=3, factor=0.7, verbose=True)
 
     history        = []
     best_val_loss  = float("inf")
     best_state     = None
-    early_stopping_patience = 50
+    early_stopping_patience = 25  # Increased from 50 for better convergence detection
     no_improve_epochs = 0
 
     for epoch in range(EPOCHS):
