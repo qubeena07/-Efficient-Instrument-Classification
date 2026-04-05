@@ -83,7 +83,7 @@ pip install opencv-python pillow scikit-learn pandas matplotlib psutil
     └── benchmark_results.json    # All benchmark results
 ```
 
-## 📚 Usage Guide
+##  Usage Guide
 
 ### 1. Train Models
 
@@ -179,7 +179,7 @@ Generates plots and visualizations of:
 
 Outputs saved as image files for detailed analysis.
 
-## 📊 Results Summary
+##  Results Summary
 
 ### Model Performance
 
@@ -202,7 +202,7 @@ Outputs saved as image files for detailed analysis.
 
 See [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md) for detailed results.
 
-## 🔧 Configuration
+##  Configuration
 
 All settings are centralized in `config.py`:
 
@@ -223,7 +223,7 @@ CHECKPOINT_PATH = "outputs/best_model.pt"
 
 Modify as needed for your hardware and requirements.
 
-## 🎯 Key Features
+##  Key Features
 
 - **Multi-Model Comparison:** Compare MobileNetV3-Small vs ResNet18
 - **Real-Time Streaming:** Full benchmarking suite for real-time performance
@@ -233,7 +233,7 @@ Modify as needed for your hardware and requirements.
 - **Data Augmentation:** Random crops, flips, and color jittering for robust training
 - **Class Balancing:** Weighted sampling to handle imbalanced datasets
 
-## 📈 Understanding the Results
+##  Understanding the Results
 
 ### Throughput
 Frames per second (FPS) the system can process steadily.
