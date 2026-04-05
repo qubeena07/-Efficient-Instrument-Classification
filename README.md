@@ -288,7 +288,7 @@ SOFTWARE.
 
 ## 📧 Contact
 
-For questions or collaborations, reach out at: **dipika.ranabhat2001@gmail.com**
+For questions or collaborations, reach out at: **dipika.ranabhat2001@gmail.com or https://www.linkedin.com/in/dipika-ranabhat-734525205/**
 
 ---
 
