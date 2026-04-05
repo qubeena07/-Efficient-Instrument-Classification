@@ -1,8 +1,8 @@
-# Real-Time Instrument Classification Project
+# Real-Time Efficient Instrument Classification Project
 
 A comprehensive deep learning project for classifying seven types of instruments in video streams using PyTorch. This project benchmarks model performance across various real-time scenarios including single/multi-threaded processing, queue buffering analysis, and CPU/GPU comparisons.
 
-## 📋 Project Overview
+## Project Overview
 
 This project trains and evaluates deep learning models (MobileNetV3-Small and ResNet18) to classify instruments from video frames. It includes extensive benchmarking to understand how these models perform as real-time streaming systems under different conditions.
 
@@ -22,13 +22,13 @@ This project trains and evaluates deep learning models (MobileNetV3-Small and Re
 - **Inference Time:** 4.55 ms (avg)
 - **Real-time Throughput:** 10 FPS
 
-## � Dataset
+##  Dataset
 
 **Surgical Instrument Classification Dataset:** https://www.kaggle.com/datasets/debeshjha1/surgical-instrument-classification
 
 This project uses a comprehensive dataset of surgical instrument images for training and evaluation of the classification models.
 
-## �🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Python 3.8+
