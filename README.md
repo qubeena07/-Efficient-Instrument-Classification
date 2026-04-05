@@ -22,13 +22,13 @@ This project trains and evaluates deep learning models (MobileNetV3-Small and Re
 - **Inference Time:** 4.55 ms (avg)
 - **Real-time Throughput:** 10 FPS
 
-## � Dataset
+## Dataset
 
 **Surgical Instrument Classification Dataset:** https://www.kaggle.com/datasets/debeshjha1/surgical-instrument-classification
 
 This project uses a comprehensive dataset of surgical instrument images for training and evaluation of the classification models.
 
-## �🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.8+
